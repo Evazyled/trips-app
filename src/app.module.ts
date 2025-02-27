@@ -14,6 +14,9 @@ import { AttractionsService } from './attractions/attractions.service';
 import { AttractionsModule } from './attractions/attractions.module';
 import { Attraction } from './attractions/attractions.model';
 import { ReviewsModule } from './reviews/reviews.module';
+import { ItinerariesModule } from './itineraries/itineraries.module';
+import { Itinerary } from './itineraries/itineraries.model';
+import { ItinerariesTrips } from './trips/trips-Itineraries.model';
 
 @Module({
   controllers: [AppController, UsersController, AttractionsController],
@@ -26,10 +29,11 @@ import { ReviewsModule } from './reviews/reviews.module';
       username: 'postgres',
       password: 'root',
       database: 'trips-app',
-      models: [User, Trip, UserTrips, Attraction],
-      autoLoadModels: true,
+      models: [User, Trip, UserTrips, Attraction, Itinerary, ItinerariesTrips],
       synchronize: true,
+      autoLoadModels: true,
     }),
+
     UsersModule,
 
     TripsModule,
@@ -37,6 +41,8 @@ import { ReviewsModule } from './reviews/reviews.module';
     AttractionsModule,
 
     ReviewsModule,
+
+    ItinerariesModule,
   ],
 })
 export class AppModule {}

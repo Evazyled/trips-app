@@ -19,26 +19,18 @@ export class UsersService {
   }
 
   async findOne(id: number) {
-    const user = await this.userRepository.findByPk(id);
-    log(typeof id);
+    const user = await this.userRepository.findByPk(id, {
+      include: { all: true },
+    });
+
     return user;
   }
 
-  async addTrip(tripName: string, userId: number) {
-    const user = await this.userRepository.findByPk(userId, {
-      include: [{ model: Trip }],
-    });
-    console.log(user);
-    const trip: any = await this.tripService.getTripByValue(tripName);
-    console.log(trip);
-    await user?.$add('trips', [trip.id]);
-    return user;
-  }
   async getTrips(id: number) {
     const user = await this.userRepository.findByPk(id, {
       include: [{ model: Trip }],
     });
-
+    console.log(user);
     return user?.trips.map((trip) => trip.name);
   }
 }

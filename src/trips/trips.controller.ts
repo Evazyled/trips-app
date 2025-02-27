@@ -13,7 +13,7 @@ export class TripsController {
   }
 
   @Get('/:value')
-  getByValue(@Param('value') value: string) {
+  getByValue(@Param('value') value: number) {
     return this.tripsService.getTripByValue(value);
   }
 }

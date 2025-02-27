@@ -15,10 +15,10 @@ export class UsersController {
     return this.usersService.findOne(id);
   }
 
-  @Post(':id/trips/:name')
-  addTripToUser(@Body('id') id: number, @Body('name') name: string) {
-    return this.usersService.addTrip(name, id);
-  }
+  // @Post(':id/trips/:name')
+  // addTripToUser(@Body('id') id: number, @Body('name') name: string) {
+  //   return this.usersService.addTrip(name, id);
+  // }
   @Get('/:id/trips')
   getTripsByUser(@Param('id') userId: number) {
     return this.usersService.getTrips(userId);
